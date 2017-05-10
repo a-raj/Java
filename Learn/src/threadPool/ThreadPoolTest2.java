@@ -22,6 +22,7 @@ public class ThreadPoolTest2 {
 		CallableTaskThread tasks[] = new CallableTaskThread[numberOfTask];
 		
 		//Future futures[] = new Future[numberOfTask];
+		@SuppressWarnings("rawtypes")
 		List<Future> futures = new ArrayList<Future>(numberOfTask);
 		
 		for(int i = 0; i < numberOfTask; i++){
