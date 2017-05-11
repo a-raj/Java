@@ -5,7 +5,7 @@ import java.util.concurrent.Callable;
 
 /**
  * 
- * A {@link Callable} is more flexible than a Runnable because it can return a value and throw an exception.
+ * A {@link Callable} is more flexible than a {@link Runnable} because it can return a value and throw an exception.
  * To implement a {@link Callable}, we provide the call method, which returns a value, in this case an Integer that represents the tasks number.
  * */
 public class CallableTaskThread implements Callable<Integer> {
