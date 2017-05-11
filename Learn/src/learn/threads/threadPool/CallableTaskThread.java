@@ -1,4 +1,4 @@
-package threadPool;
+package learn.threads.threadPool;
 
 import java.util.concurrent.Callable;
 

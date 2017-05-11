@@ -1,4 +1,4 @@
-package threadPool;
+package learn.threads.threadPool;
 
 public class TaskThread implements Runnable{
 
