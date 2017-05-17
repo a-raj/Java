@@ -4,7 +4,7 @@ public class TestGeneris {
 
 	public static void main(String[] args) {
 		
-		Integer intArray[] = {1, 2, 3, 4, 5, 6};
+		Integer intArray[] = {123, 234, 345};
 		GenericsNumber<Integer> genInt = new GenericsNumber<Integer>(intArray);
 		System.out.println("Average of Integer array "+ genInt.average() + " and the Sum is " + genInt.sum());
 		
@@ -15,5 +15,15 @@ public class TestGeneris {
 		Long longArray[] = {123L, 234L, 345L};
 		GenericsNumber<Long> genLong = new GenericsNumber<Long>(longArray);
 		System.out.println("Average of long array " + genLong.average());
+		
+		
+		//Testing Wildcard argument
+		if(genDouble.sameAverage(genInt))
+			System.out.println("Average of genDouble and genInt are same.");
+		else 
+			System.out.println("Average of gen Double and genInt are different");
+		
+		if(genInt.sameAverage(genLong))
+			System.out.println("Average of genInt and genLong are Same");
 	}
 }

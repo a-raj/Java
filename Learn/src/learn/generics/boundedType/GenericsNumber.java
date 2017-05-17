@@ -25,4 +25,14 @@ public class GenericsNumber<T extends Number> {
 		}
 		return sum;
 	}
+	/**
+	 * Determines if two averages are same irrespective of there type(Integer or Double) by using Wildcard(?) argument
+	 * ? represents an unknown type
+	 * Wildcard simply matches any valid {@link GenericsNumber} objects
+	 * */
+	boolean sameAverage(GenericsNumber<?> genericsNumber){
+		if(average() == genericsNumber.average())
+			return true;
+		return false;
+	}
 }
