@@ -1,5 +1,8 @@
 package learn.generics.gen1;
 
+/**
+ * A Generic class which show the type of argument 
+ * */
 public class GenericsDemo {
 
 	public static void main(String[] args) {
