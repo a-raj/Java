@@ -1,5 +1,9 @@
 package learn.generics.boundedWildcard;
 
+/**
+ * Class to test bounded wildcard argument
+ * By using extends in the wildcard argument we are establishing an upper bound for wildcard(?)
+ * */
 public class TestBoundedWildCard {
 	
 	static void showXY(GenericCoordinates<?> genericCoordinates){

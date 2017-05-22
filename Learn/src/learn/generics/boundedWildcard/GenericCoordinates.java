@@ -1,5 +1,7 @@
 package learn.generics.boundedWildcard;
-
+/**
+ * This class holds an array of coordinates with upper bound {@link TwoD}
+ * */
 public class GenericCoordinates<T extends TwoD> {
 
 	T[] coordinates;
