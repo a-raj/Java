@@ -8,6 +8,7 @@ public class OpenNotepad {
 		
 		try {
 			process = runtime.exec("notepad");
+			process.waitFor();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
