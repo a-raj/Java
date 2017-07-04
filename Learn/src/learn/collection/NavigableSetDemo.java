@@ -6,7 +6,7 @@ import java.util.TreeSet;
 public class NavigableSetDemo {
 	
 	public static void main(String[] args) {
-		NavigableSet<String> navigableSet = new TreeSet<>();
+		//NavigableSet<String> navigableSet = new TreeSet<>();
 	}
 	
 
