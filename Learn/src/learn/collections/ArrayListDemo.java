@@ -4,6 +4,13 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+
+/*
+ * Resizable-array implementation of the List interface
+ * ArrayList is simplest of all collection classes it
+ * Implements List Interface and
+ * Extends AbstractList
+ * */
 public class ArrayListDemo {
 	
 	public static void main(String[] args) {
