@@ -4,6 +4,9 @@ import java.util.Deque;
 import java.util.LinkedList;
 import java.util.List;
 
+/*
+ * Doubly-linked list implementation of the List and Deque interfaces.
+ * */
 public class LinkedListDemo {
 	
 	public static void main(String[] args) {
