@@ -1,8 +1,10 @@
 package java8.lambdas;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.function.Consumer;
+import static java.util.stream.Collectors.*;
 
 public class LambdasAndStreams {
 
@@ -118,7 +120,7 @@ public class LambdasAndStreams {
 				result += e*2;
 			}
 		}
-		System.out.println(result);
+		
 		
 		//DECLARITIVE STYLE CODING OR FUNCTIONAL
 		
@@ -146,12 +148,93 @@ public class LambdasAndStreams {
 						.sum());
 		
 		/*
-		 * Read more about parallelStream
+		 *  Read more about parallelStream
+		 *  Use it very carefully It is like a bulldozer 
+		 * 
+		 *  ParallelStram says I don't mind using a lot of thread and a lot of resources so I can get the answer faster.
+		 * 
+		 *  Use ParallelStream when it make sense to use it 
+		 *  1. When the problem in hand is  actually parallelisable
+		 *  2. When you are willing to spend a lot of Resources to get the result faster
+		 *  3. When the data size is big enough you get the benefit in performance
+		 *  4. When the task computation is big enough you get the benefit in performance
+		 *  
+		 *  
+		 *  Make sure the performance is good not just use it 
+		 * 
 		 * */
 		System.out.println(
 				numbers.parallelStream()
 						.filter(e -> e % 2 == 0)
 						.mapToInt(e -> e*2)
 						.sum());
+		
+		/*
+		 * STREAMS
+		 * 
+		 * Non mutating pipeline 
+		 * 
+		 * Some common function in Streams
+		 * 
+		 * 1. filter : I'm gonna take the value in streams and block some and take some 
+		 * 			   input: Stream<T> filter take Predicate<T> filter function take the predicate of type T
+		 * 
+		 * 2. map : map is a transformation function
+		 * 			no of input = output, but no guarantee on the type of output wrt input
+		 * 
+		 * 			Parameter : STream<T> map takes Function<T,R> to return Stream<R>
+		 * 			Receive a parameter a function that will take the value from the Collection that is coming in and return the output to the Stream   
+		 * 			
+		 *   Both filter and map stay within their swimlanes
+		 *   Reduce cut across the swimlane  
+		 *   
+		 * 3. reduce : take an initial value, take that value for the operation and produces the result for particular computation and it goes on the same way
+		 * 				reduce on Stream<T> takes two parameters:
+		 * 				1. first parameter is of type T
+		 * 				2. second parameter is of type BiFunction<R, T, R> to produce a result of R, R is the input and the output type
+		 * 
+		 * 
+		 * 4. collect : 
+		 * */
+		
+		
+		List<Integer> numbers2 = Arrays.asList(1, 2, 3, 4, 5, 1, 2, 3, 4, 5);
+		
+		//double the even values and put that into a list.
+		
+		//Wrong way to do this
+		List<Integer> doubleOfEven = new ArrayList<>();
+		
+		numbers2.stream()
+				.filter(e -> e % 2 == 0)
+				.map(e -> e * 2)
+				.forEach(e -> doubleOfEven.add(e));
+		
+		//Mutability is OK, Sharing is nice, Sharing Mutability is DEVILS WORK
+		
+		
+		
+		/* 
+		 * collect function that take safety for us
+		 **/
+		List<Integer> doubleOfEven2 = new ArrayList<>();
+		
+		numbers2.stream()
+				.filter(e -> e % 2 == 0)
+				.map(e -> e * 2)
+				.collect(toList());
+		
+		System.out.println(doubleOfEven2);
+		
+		
+		/*
+		 * collect : collect is a reduce function 
+		 * 			toList()
+		 * 			toSet()
+		 * 			toMap()
+		 * */
+		
+		
 	}
 }
+	
