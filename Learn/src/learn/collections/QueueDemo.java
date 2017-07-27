@@ -8,7 +8,7 @@ import java.util.PriorityQueue;
 public class QueueDemo {
 	
 	//compare two string according to there length
-	static class StringLengthComparator implements Comparator<String>{
+	public static class StringLengthComparator implements Comparator<String>{
 
 		@Override
 		public int compare(String s1, String s2) {
