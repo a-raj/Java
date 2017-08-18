@@ -1,7 +1,5 @@
 package learn.concurrentAPI.phaser.demo2;
 
-import learn.concurrentAPI.exchanger.MyThread;
-
 public class PhaseDemo2 {
 	
 	public static void main(String[] args) {
