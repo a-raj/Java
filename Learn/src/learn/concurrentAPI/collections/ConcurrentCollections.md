@@ -26,8 +26,8 @@ BlockingQueue is interface that represents a queue which is thread safe to put i
 
 
 #### ArrayBlockingQueue
-**Implements** BlockingQueue
-**Extends** AbstractQueue
+**Implements** BlockingQueue <br>
+**Extends** AbstractQueue <br>
 ArrayBlockingQueue is a bounded, blocking queue that stores the elements internally in an array. That it is bounded means that it cannot store unlimited amounts of elements. There is an upper bound on the number of elements it can store at the same time. You set the upper bound at instantiation time, and after that it cannot be changed.
 
 ###### It contains three constructors
