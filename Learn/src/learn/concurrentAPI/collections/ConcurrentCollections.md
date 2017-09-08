@@ -6,7 +6,7 @@
 	* [LinkedBlockingQueue](#linkedblockingqueue)
 	* [PriorityBLockingQueue](#priorityblockingqueue)
 	* [SynchronousQueue](#synchronousqueue)
-	* _[BlockingDeque](blocingdeque)_
+	* _[BlockingDeque](#blocingdeque)_
 		* [LinkedBlockingDeque](#linkedblockingdeque)
 	* _[TransferQueue](#trasferqueue)_
 		* [LinkedTrasferQueue](#linkedtrasferqueue)
