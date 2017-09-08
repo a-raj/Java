@@ -8,7 +8,7 @@
 	* [SynchronousQueue](#synchronousqueue)
 	* _[BlockingDeque](blocingdeque)_
 		* [LinkedBlockingDeque](#linkedblockingdeque)
-	* _[TrasferQueue](#trasferqueue)_
+	* _[TransferQueue](#trasferqueue)_
 		* [LinkedTrasferQueue](#linkedtrasferqueue)
 * _[ConcurrentMap](#concurrentmap)_
 	* [ConcurrentHashMap](#concurrenthashmap)
@@ -137,5 +137,5 @@ The SynchronousQueue is a queue that can only contain a single element internall
 From JavaDoc : each insert operation must wait for a corresponding remove operation by another thread, and vice versa.
 ```java
 SynchronousQueue<String> synchronousQueue = new SynchronousQueue<>();
-synchronousQueue.put("Someone other Thread is waithing to remove me!");
+synchronousQueue.put("Someone other Thread is waiting to remove me!");
 ```
