@@ -3,13 +3,17 @@ package learn.concurrentAPI.collections;
 import java.util.Arrays;
 import java.util.UUID;
 import java.util.concurrent.ArrayBlockingQueue;
+import java.util.concurrent.BlockingDeque;
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.DelayQueue;
 import java.util.concurrent.Delayed;
+import java.util.concurrent.LinkedBlockingDeque;
 import java.util.concurrent.LinkedBlockingQueue;
+import java.util.concurrent.LinkedTransferQueue;
 import java.util.concurrent.PriorityBlockingQueue;
 import java.util.concurrent.SynchronousQueue;
 import java.util.concurrent.TimeUnit;
+import java.util.concurrent.TransferQueue;
 
 public class BlockingQueueDemo {
 	
@@ -58,9 +62,21 @@ public class BlockingQueueDemo {
 		 * Each insert operation must wait for a corresponding remove operation by another thread, and vice versa.
 		 * */
 		BlockingQueue<String> synchronousQueue = new SynchronousQueue<>();
-		synchronousQueue.put("Someone other Thread is waithing to remove me!");
+		synchronousQueue.put("Someone other Thread is watiing to remove me!");
+
+		
+		/*
+		 * BlockingDeque and LinkedBlockingDeque
+		 * Double Ended Queue 
+		 * */
+		BlockingDeque<String> blockingDeque = new LinkedBlockingDeque<String>();
+		blockingDeque.add("first");
+		blockingDeque.addFirst("zero");
+		System.out.println(blockingDeque.takeLast());
 		
 		
+		TransferQueue<String> transferQueue = new LinkedTransferQueue<>();
+		transferQueue.add("Transfer 1");
 		
 	}
 }

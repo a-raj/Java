@@ -21,9 +21,16 @@
 * [CopyOnWriteArraySet](#copyonwritearrayset)
 
 
-#### BlockingQueue
+#### _BlockingQueue_
 BlockingQueue is interface that represents a queue which is thread safe to put into, and take instances from.
+<br>
+java doc : BlockingQueue methods come in four forms, with different ways of handling operations that cannot be satisfied immediately, but may be satisfied at some point in the future: one throws an exception, the second returns a special value (either null or false, depending on the operation), the third blocks the current thread indefinitely until the operation can succeed, and the fourth blocks for only a given maximum time limit before giving up. These methods are summarized in the following table:
 
+  X | Throws exception | Special value | Blocks | Times out
+--- | ---------------- | ------------- | ------ | ---------
+**Insert** | add(e) | 	offer(e) | put(e) | offer(e, time, unit)
+**Remove** | remove()	| poll() | take() | poll(time, unit)
+**Examine** | element() | peek() | not applicable	| not applicable
 
 #### ArrayBlockingQueue
 **Implements** BlockingQueue <br>
@@ -139,3 +146,42 @@ From JavaDoc : each insert operation must wait for a corresponding remove operat
 SynchronousQueue<String> synchronousQueue = new SynchronousQueue<>();
 synchronousQueue.put("Someone other Thread is waiting to remove me!");
 ```
+
+#### _BlockingDeque_
+**Extends** BlockingQueue and Deque
+BlockingDeque is interface that represents a deuqe which is thread safe to put into, and take instances from both side (head and tail of queue).
+<br/>
+Java Doc: BlockingDeque methods come in four forms, with different ways of handling operations that cannot be satisfied immediately, but may be satisfied at some point in the future: one throws an exception, the second returns a special value (either null or false, depending on the operation), the third blocks the current thread indefinitely until the operation can succeed, and the fourth blocks for only a given maximum time limit before giving up. These methods are summarized in the following table:
+
+
+  X | Throws exception | Special value | Blocks | Times out
+--- | ---------------- | ------------- | ------ | ---------
+**Insert** | addFirst(e) | offerFirst(e) | putFirst(e) | offerFirst(e, time, unit)
+**Remove** | removeFirst()	| pollFirst()	| takeFirst()	| pollFirst(time, unit)
+**Examine** | getFirst() | peekFirst() | not applicable	| not applicable
+
+  X | Throws exception | Special value | Blocks | Times out
+--- | ---------------- | ------------- | ------ | ---------
+**Insert** | addLast(e) | 	offerLast(e) | putLast(e) | offerLast(e, time, unit)
+**Remove** | removeLast()	| pollLast() | takeLast() | pollLast(time, unit)
+**Examine** | getLast() | peekLast() | not applicable	| not applicable
+
+#### LinkedBlockingDeque
+**Implements** BlockingDeque
+**Extends** AbstractQueue
+An optionally-bounded blocking deque based on linked nodes. <br>
+The capacity, if unspecified, is equal to Integer.MAX_VALUE. Linked nodes are dynamically created upon each insertion unless this would bring the deque above capacity.
+
+```java
+BlockingDeque<String> blockingDeque = new LinkedBlockingDeque<String>();
+blockingDeque.add("first");
+blockingDeque.addFirst("zero");
+System.out.println(blockingDeque.takeLast());
+```
+
+#### _TransferQueue_
+TransferQueue is interface
+> A BlockingQueue in which producers may wait for consumers to receive elements. A TransferQueue may be useful for example in message passing applications in which producers sometimes (using method transfer(E)) await receipt of elements by consumers invoking take or poll, while at other times enqueue elements (via method put) without waiting for receipt.
+> - JavaDocs
+
+In other words, when you use BlockingQueue, you can only put element into queue (and block if queue is full). With TransferQueue, you can also block until other thread receives your element (you must use new transfer method for that). This is the difference. With BlockingQueue, you cannot wait until other thread removes your element (only when you use SynchronousQueue, but that isn't really a queue).
