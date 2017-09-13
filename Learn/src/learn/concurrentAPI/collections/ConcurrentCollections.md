@@ -180,8 +180,28 @@ System.out.println(blockingDeque.takeLast());
 ```
 
 #### _TransferQueue_
-TransferQueue is interface
+**Extends** BlockingQueue
+TransferQueue is an interface.
 > A BlockingQueue in which producers may wait for consumers to receive elements. A TransferQueue may be useful for example in message passing applications in which producers sometimes (using method transfer(E)) await receipt of elements by consumers invoking take or poll, while at other times enqueue elements (via method put) without waiting for receipt.
-> - JavaDocs
 
 In other words, when you use BlockingQueue, you can only put element into queue (and block if queue is full). With TransferQueue, you can also block until other thread receives your element (you must use new transfer method for that). This is the difference. With BlockingQueue, you cannot wait until other thread removes your element (only when you use SynchronousQueue, but that isn't really a queue).
+
+
+#### LinkedTrasferQueue
+**Implements** TransferQueue
+**Extends** AbstractQueue
+LinkedTrasferQueue is the only implementation class of TrasferQueue
+An unbounded TransferQueue based on linked nodes. This queue orders elements FIFO.
+> The size method is NOT a constant-time operation. Because of the asynchronous nature of these queues, determining the current number of elements requires a traversal of the elements, and so may report inaccurate results if this collection is modified during traversal. Additionally, the bulk operations addAll, removeAll, retainAll, containsAll, equals, and toArray are not guaranteed to be performed atomically. For example, an iterator operating concurrently with an addAll operation might view only some of the added elements.
+
+```java
+String s1 = "Transfer 1";
+TransferQueue<String> transferQueue = new LinkedTransferQueue<>();
+transferQueue.add(s1);
+transferQueue.transfer(s1);
+```
+
+
+#### ConcurrentMap
+> A Map providing thread safety and atomicity guarantees.
+
