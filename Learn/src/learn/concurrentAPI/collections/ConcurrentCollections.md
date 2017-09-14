@@ -21,10 +21,9 @@
 * [CopyOnWriteArraySet](#copyonwritearrayset)
 
 
-#### _BlockingQueue_
-BlockingQueue is interface that represents a queue which is thread safe to put into, and take instances from.
-<br>
-java doc : BlockingQueue methods come in four forms, with different ways of handling operations that cannot be satisfied immediately, but may be satisfied at some point in the future: one throws an exception, the second returns a special value (either null or false, depending on the operation), the third blocks the current thread indefinitely until the operation can succeed, and the fourth blocks for only a given maximum time limit before giving up. These methods are summarized in the following table:
+#### _BlockingQueue_  
+BlockingQueue is interface that represents a queue which is thread safe to put into, and take instances from.  
+> BlockingQueue methods come in four forms, with different ways of handling operations that cannot be satisfied immediately, but may be satisfied at some point in the future: one throws an exception, the second returns a special value (either null or false, depending on the operation), the third blocks the current thread indefinitely until the operation can succeed, and the fourth blocks for only a given maximum time limit before giving up. These methods are summarized in the following table:
 
   X | Throws exception | Special value | Blocks | Times out
 --- | ---------------- | ------------- | ------ | ---------
@@ -205,3 +204,52 @@ transferQueue.transfer(s1);
 #### ConcurrentMap
 > A Map providing thread safety and atomicity guarantees.
 
+Followings default methods are added in Java 8 
+* **forEach(BiConsumer<? super K,? super V> action)** 
+Performs the given action for each entry in this map until all entries have been processed or the action throws an exception.
+* **compute(K key, BiFunction<? super K,? super V,? extends V> remappingFunction)**
+Attempts to compute a mapping for the specified key and its current mapped value (or null if there is no current mapping).
+* **computeIfAbsent(K key, Function<? super K,? extends V> mappingFunction)**
+If the specified key is not already associated with a value (or is mapped to null), attempts to compute its value using the given mapping function and enters it into this map unless null.
+* **computeIfPresent(K key, BiFunction<? super K,? super V,? extends V> remappingFunction)**
+If the value for the specified key is present and non-null, attempts to compute a new mapping given the key and its current mapped value.
+* **getOrDefault(Object key, V defaultValue)**
+Returns the value to which the specified key is mapped, or defaultValue if this map contains no mapping for the key.
+* **merge(K key, V value, BiFunction<? super V,? super V,? extends V> remappingFunction)**
+If the specified key is not already associated with a value or is associated with null, associates it with the given non-null value.
+* **replaceAll(BiFunction<? super K,? super V,? extends V> function)**
+Replaces each entry's value with the result of invoking the given function on that entry until all entries have been processed or the function throws an exception.
+
+
+#### ConcurrentHashMap
+**Implements** ConcurrentMap  
+**Extends** AbstractMap  
+The ConcurrentHashMap is very similar to the java.util.HashTable class, except that ConcurrentHashMap offers better concurrency than HashTable does. ConcurrentHashMap does not lock the Map while you are reading from it. Additionally, ConcurrentHashMap does not lock the entire Map when writing to it. It only locks the part of the Map that is being written to, internally.  
+Methods like size, isEmpty, and containsValue are typically useful only when a map is not undergoing concurrent updates in other threads. Otherwise the results of these methods reflect transient states.  	
+One Important contructor  
+**ConcurrentHashMap(int initialCapacity, float loadFactor, int concurrencyLevel)**  
+Creates a new, empty map with an initial table size based on the given number of elements (initialCapacity), table density (loadFactor), and number of concurrently updating threads (concurrencyLevel).
+
+```java
+ConcurrentMap<String, Integer> concurrentHashMap = new ConcurrentHashMap<>();
+concurrentHashMap.put("One", 1);
+concurrentHashMap.putIfAbsent("Two", 2);
+```
+
+#### _ConcurrentNavigableMap_
+**Extends** ConcurrentMap, NavigableMap
+> The java.util.concurrent.ConcurrentNavigableMap class is a java.util.NavigableMap with support for concurrent access, and which has concurrent access enabled for its submaps. The "submaps" are the maps returned by various methods like headMap(), subMap() and tailMap().  
+
+
+#### ConcurrentSkipListMap
+**Implements** ConcurrentNavigableMap  
+**Extends** AbstractMap  
+> A scalable concurrent ConcurrentNavigableMap implementation. The map is sorted according to the natural ordering of its keys, or by a Comparator provided at map creation time, depending on which constructor is used.  
+The size method is not a constant-time operation. Because of the asynchronous nature of these maps, determining the current number of elements requires a traversal of the elements, and so may report inaccurate results if this collection is modified during traversal. Additionally, the bulk operations putAll, equals, toArray, containsValue, and clear are not guaranteed to be performed atomically.  
+
+ConcurrencyLevel constructor is also available
+```java
+ConcurrentNavigableMap<String, Integer> concurrentNavigableMap = new ConcurrentSkipListMap<>();
+concurrentNavigableMap.put("One", 1);
+concurrentNavigableMap.put("Two", 2);
+```
