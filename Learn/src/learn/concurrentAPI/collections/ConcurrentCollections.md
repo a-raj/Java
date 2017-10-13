@@ -149,7 +149,7 @@ BlockingQueue<String> priorityBlockingQueue = new PriorityBlockingQueue<>(10, so
 
 **Implements** BlockingQueue  
 **Extends** AbstractQueue  
-The SynchronousQueue is a queue that can only contain a single element internally. A thread inseting an element into the queue is blocked until another thread takes that element from the queue. Likewise, if a thread tries to take an element and no element is currently present, that thread is blocked until a thread insert an element into the queue.
+The SynchronousQueue is a queue that can only contain a single element internally. A thread inseting an element into the queue is blocked until another thread takes that element from the queue. Likewise, if a thread tries to take an element and no element is currently present, that thread is blocked until a thread insert an element into the queue.  
 From JavaDoc : each insert operation must wait for a corresponding remove operation by another thread, and vice versa.
 
 ```java
@@ -161,7 +161,7 @@ synchronousQueue.put("Someone other Thread is waiting to remove me!");
 
 **Extends** BlockingQueue and Deque  
 BlockingDeque is interface that represents a deuqe which is thread safe to put into, and take instances from both side (head and tail of queue).  
-Java Doc: BlockingDeque methods come in four forms, with different ways of handling operations that cannot be satisfied immediately, but may be satisfied at some point in the future: one throws an exception, the second returns a special value (either null or false, depending on the operation), the third blocks the current thread indefinitely until the operation can succeed, and the fourth blocks for only a given maximum time limit before giving up. These methods are summarized in the following table:
+>BlockingDeque methods come in four forms, with different ways of handling operations that cannot be satisfied immediately, but may be satisfied at some point in the future: one throws an exception, the second returns a special value (either null or false, depending on the operation), the third blocks the current thread indefinitely until the operation can succeed, and the fourth blocks for only a given maximum time limit before giving up. These methods are summarized in the following table:
 
   X | Throws exception | Special value | Blocks | Times out
 --- | ---------------- | ------------- | ------ | ---------
@@ -197,6 +197,12 @@ TransferQueue is an interface.
 
 In other words, when you use BlockingQueue, you can only put element into queue (and block if queue is full). With TransferQueue, you can also block until other thread receives your element (you must use new transfer method for that). This is the difference. With BlockingQueue, you cannot wait until other thread removes your element (only when you use SynchronousQueue, but that isn't really a queue).
 
+Default methods:
+
+* **getWaitingConsumerCount​()** : Returns an estimate of the number of consumers waiting to receive elements via BlockingQueue.take() or timed poll.
+* **hasWaitingConsumer​()** : Returns true if there is at least one consumer waiting to receive an element via BlockingQueue.take() or timed poll.
+* **transfer​(E e)** : Transfers the element to a consumer, waiting if necessary to do so.
+* **tryTransfer​(E e, long timeout, TimeUnit unit)** : Transfers the element to a consumer if it is possible to do so before the timeout elapses
 
 ## LinkedTrasferQueue
 
@@ -219,33 +225,19 @@ transferQueue.transfer(s1);
 
 Followings default methods are added in Java 8  
 
-* **forEach(BiConsumer<? super K,? super V> action)**
+* **forEach(BiConsumer<? super K,? super V> action)** : Performs the given action for each entry in this map until all entries have been processed or the action throws an exception.
 
-Performs the given action for each entry in this map until all entries have been processed or the action throws an exception.
+* **compute(K key, BiFunction<? super K,? super V,? extends V> remappingFunction)** : Attempts to compute a mapping for the specified key and its current mapped value (or null if there is no current mapping).
 
-* **compute(K key, BiFunction<? super K,? super V,? extends V> remappingFunction)**
+* **computeIfAbsent(K key, Function<? super K,? extends V> mappingFunction)** : If the specified key is not already associated with a value (or is mapped to null), attempts to compute its value using the given mapping function and enters it into this map unless null.
 
-Attempts to compute a mapping for the specified key and its current mapped value (or null if there is no current mapping).
+* **computeIfPresent(K key, BiFunction<? super K,? super V,? extends V> remappingFunction)** : If the value for the specified key is present and non-null, attempts to compute a new mapping given the key and its current mapped value.
 
-* **computeIfAbsent(K key, Function<? super K,? extends V> mappingFunction)**
+* **getOrDefault(Object key, V defaultValue)** : Returns the value to which the specified key is mapped, or defaultValue if this map contains no mapping for the key.
 
-If the specified key is not already associated with a value (or is mapped to null), attempts to compute its value using the given mapping function and enters it into this map unless null.
+* **merge(K key, V value, BiFunction<? super V,? super V,? extends V> remappingFunction)** : If the specified key is not already associated with a value or is associated with null, associates it with the given non-null value.
 
-* **computeIfPresent(K key, BiFunction<? super K,? super V,? extends V> remappingFunction)**
-
-If the value for the specified key is present and non-null, attempts to compute a new mapping given the key and its current mapped value.
-
-* **getOrDefault(Object key, V defaultValue)**
-
-Returns the value to which the specified key is mapped, or defaultValue if this map contains no mapping for the key.
-
-* **merge(K key, V value, BiFunction<? super V,? super V,? extends V> remappingFunction)**
-
-If the specified key is not already associated with a value or is associated with null, associates it with the given non-null value.
-
-* **replaceAll(BiFunction<? super K,? super V,? extends V> function)**
-
-Replaces each entry's value with the result of invoking the given function on that entry until all entries have been processed or the function throws an exception.
+* **replaceAll(BiFunction<? super K,? super V,? extends V> function)** : 	Replaces each entry's value with the result of invoking the given function on that entry until all entries have been processed or the function throws an exception.
 
 ## ConcurrentHashMap
 
