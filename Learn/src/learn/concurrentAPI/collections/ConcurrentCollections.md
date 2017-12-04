@@ -8,15 +8,15 @@
   * [SynchronousQueue](#synchronousqueue)
   * _[BlockingDeque](#blocingdeque)_
     * [LinkedBlockingDeque](#linkedblockingdeque)
-    * _[TransferQueue](#trasferqueue)_
+    * _[TransferQueue](#transferqueue)_
     * [LinkedTrasferQueue](#linkedtrasferqueue)
 * _[ConcurrentMap](#concurrentmap)_
   * [ConcurrentHashMap](#concurrenthashmap)
   * _[ConcurrentNavigableMap](#concurrentnavigablemap)_
     * [ConcurrentSkipListMap](#concurrentskiplistmap)
+* [ConcurrentSkipListSet](#concurrentskiplistset)
 * [ConcurrentLinkedDeque](#concurrentlinkeddeque)
 * [ConcurrentLinkedQueue](#concurrentlinkedqueue)
-* [ConcurrentSkipListSet](#concurrentskiplistset)
 * [CopyOnWriteArrayList](#copyonwritearraylist)
 * [CopyOnWriteArraySet](#copyonwritearrayset)
 
@@ -37,7 +37,7 @@ BlockingQueue is interface that represents a queue which is thread safe to put i
 **Extends** AbstractQueue  
 ArrayBlockingQueue is a bounded, blocking queue that stores the elements internally in an array. That it is bounded means that it cannot store unlimited amounts of elements. There is an upper bound on the number of elements it can store at the same time. You set the upper bound at instantiation time, and after that it cannot be changed.
 
-It contains three constructors**
+It contains three constructors
 
 ```java
 ArrayBlockingQueue(int capacity);
@@ -221,7 +221,8 @@ transferQueue.transfer(s1);
 
 ## ConcurrentMap
 
-> A Map providing thread safety and atomicity guarantees.
+> A Map providing thread safety and atomicity guarantees.  
+ConcurrentMap cannot contain null values and get() returning null unambiguously means the key is absent.
 
 Followings default methods are added in Java 8  
 
@@ -276,4 +277,48 @@ concurrentNavigableMap.put("One", 1);
 concurrentNavigableMap.put("Two", 2);
 ```
 
-## ConcurrentLinkedDeque
+ConcurrentSkipListSet and ConcurrentSkipListMap are useful when you need a sorted container that will be accessed by multiple threads. These are essentially the equivalents of TreeMap and TreeSet for concurrent code.
+
+The implementation for JDK 6 is based on High Performance Dynamic Lock-Free Hash Tables and List-Based Sets by Maged Michael at IBM, which shows that you can implement a lot of operations on skip lists atomically using compare and swap (CAS) operations. These are lock-free, so you don't have to worry about the overhead of synchronized (for most operations) when you use these classes.
+
+## ConcurrentSkipListSet
+
+It is implementd using ConncurrentSkipListMap. It contain a single instance varibale and that is ConncurrentSkipListMap.
+
+## ConcurrentLinkedDeque  
+
+**Implements** Dequqe  
+> An unbounded concurrent deque based on linked nodes.  
+Iterators and spliterators are weakly consistent.
+
+## ConcurrentLinkedQueue  
+
+## CopyOnWriteArrayList
+
+> As name suggest CopyOnWriteArrayList creates copy of underlying
+> ArrayList with every mutation operation e.g. add or set. Normally
+> CopyOnWriteArrayList is very expensive because it involves costly
+> Array copy with every write operation but **its very efficient if you
+> have a List where Iteration outnumber mutation** e.g. you mostly need to
+> iterate the ArrayList and don't modify it too often.  
+>
+> **Iterator of CopyOnWriteArrayList is fail-safe and doesn't throw
+> ConcurrentModificationException** even if underlying
+> CopyOnWriteArrayList is modified once Iteration begins because
+> Iterator is operating on separate copy of ArrayList. Consequently all
+> the updates made on CopyOnWriteArrayList is not available to Iterator.
+
+To get the most updated version do a new read like `list.iterator();`
+
+That being said, updating this collection alot will kill performance. If you tried to sort a CopyOnWriteArrayList you'll see the list throws an UsupportedOperationException (the sort invokes set on the collection N times). You should only use this read when you are doing upwards of 90+% reads.
+StackOverFlow
+
+## CopyOnWriteArraySet
+
+A Set that uses an internal CopyOnWriteArrayList for all of its operations. Thus, it shares the same basic properties:
+
+* It is best suited for applications in which set sizes generally stay small, read-only operations vastly outnumber mutative operations, and you need to prevent interference among threads during traversal.
+* It is thread-safe.
+* Mutative operations (add, set, remove, etc.) are expensive since they usually entail copying the entire underlying array.
+* Iterators do not support the mutative remove operation.
+* Traversal via iterators is fast and cannot encounter interference from other threads. Iterators rely on unchanging snapshots of the array at the time the iterators were constructed.

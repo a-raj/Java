@@ -62,7 +62,7 @@ public class BlockingQueueDemo {
 		 * Each insert operation must wait for a corresponding remove operation by another thread, and vice versa.
 		 * */
 		BlockingQueue<String> synchronousQueue = new SynchronousQueue<>();
-		synchronousQueue.put("Someone other Thread is watiing to remove me!");
+		synchronousQueue.put("Someone other Thread is waiting to remove me!");
 
 		
 		/*

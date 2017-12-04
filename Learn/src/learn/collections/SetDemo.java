@@ -41,7 +41,7 @@ public class SetDemo {
 
 		linkedHashSet.forEach(System.out::println);
 
-		// TreeSet implements NavigableSet and it maintain the order in accending order.
+		// TreeSet implements NavigableSet and it maintain the order in ascending order.
 		Set<String> treeSet = new TreeSet<>();
 		treeSet.add("A");
 		treeSet.add("AA");
