@@ -16,6 +16,13 @@ public class RecursiveTaskDemo {
         Sum task = new Sum(numbers, 0, numbers.length);
         double summation = forkJoinPool.invoke(task);
         System.out.println("Sum is: " + summation);
+
+
+        //To see ForkJoinPool in working condition use below code and comment out above 2 lines
+        /*forkJoinPool.execute(task);
+        while (!task.isDone()) {
+            System.out.println(forkJoinPool);
+        }*/
     }
 
 
