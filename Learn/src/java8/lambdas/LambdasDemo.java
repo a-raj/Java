@@ -24,7 +24,7 @@ public class LambdasDemo {
 		 * Here name became anonymous and return type inferred
 		 * 
 		 * */
-		
+
 		Thread thread2 = new Thread(() -> System.out.println("Lambda thread"));
 		thread2.start();
 	}

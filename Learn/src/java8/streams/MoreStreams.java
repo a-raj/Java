@@ -53,9 +53,9 @@ List<Integer> numbers = Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13,
 		 * 
 		 * So Cost of doing this same as doing it with for loop example
 		 * 
-		 *  LASY EVALUATION
+		 *  LAZY EVALUATION
 		 *  
-		 *  This evaluation are only perform when you are triggr the terminal operation findFirst()
+		 *  This evaluation are only perform when you trigger the terminal operation findFirst()
 		 *  If you never trigger the terminal you never evaluating this 
 		 *  
 		 *  TRY COMMENT OUT findFirst() and you will find that it didn't pass to any of the function at all

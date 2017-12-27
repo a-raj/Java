@@ -151,7 +151,7 @@ public class LambdasAndStreams {
 		 *  Read more about parallelStream
 		 *  Use it very carefully It is like a bulldozer 
 		 * 
-		 *  ParallelStram says I don't mind using a lot of thread and a lot of resources so I can get the answer faster.
+		 *  ParallelStream says I don't mind using a lot of thread and a lot of resources so I can get the answer faster.
 		 * 
 		 *  Use ParallelStream when it make sense to use it 
 		 *  1. When the problem in hand is  actually parallelisable
@@ -182,7 +182,7 @@ public class LambdasAndStreams {
 		 * 2. map : map is a transformation function
 		 * 			no of input = output, but no guarantee on the type of output wrt input
 		 * 
-		 * 			Parameter : STream<T> map takes Function<T,R> to return Stream<R>
+		 * 			Parameter : Stream<T> map takes Function<T,R> to return Stream<R>
 		 * 			Receive a parameter a function that will take the value from the Collection that is coming in and return the output to the Stream   
 		 * 			
 		 *   Both filter and map stay within their swimlanes
@@ -208,7 +208,7 @@ public class LambdasAndStreams {
 		numbers2.stream()
 				.filter(e -> e % 2 == 0)
 				.map(e -> e * 2)
-				.forEach(e -> doubleOfEven.add(e));
+				.forEach(doubleOfEven::add);
 		
 		//Mutability is OK, Sharing is nice, Sharing Mutability is DEVILS WORK
 		

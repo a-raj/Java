@@ -26,7 +26,7 @@ public class TestGroupBy {
 		
 		/*
 		 * 
-		 * GRUOPIN & MAPPING
+		 * GROUPING & MAPPING
 		 * Given a list of people, create a map where
 		 * there name is the key and value is all the ages of people with that name
 		 * 
