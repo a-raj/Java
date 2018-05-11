@@ -249,7 +249,9 @@ Methods like size, isEmpty, and containsValue are typically useful only when a m
 
 One Important contructor  
 **ConcurrentHashMap(int initialCapacity, float loadFactor, int concurrencyLevel)**  
-Creates a new, empty map with an initial table size based on the given number of elements (initialCapacity), table density (loadFactor), and number of concurrently updating concurrentClasses.threads (concurrencyLevel).
+Creates a new, empty map with an initial table size based on the given number of elements (initialCapacity), table density (loadFactor), and number of concurrently updating concurrentClasses.threads (concurrencyLevel).  Initial capacity parameter and concurrency level parameters of ConcurrentHashMap constructor are set to 16 by default.  
+  
+Thus, instead of a map wide lock, ConcurrentHashMap maintains  a list of 16 locks by default (number of locks equal to the initial capacity , which is by default  16) each of which is used to lock on a single bucket of the Map. This indicates that 16 threads (number of threads equal to the concurrency level, which is by  default 16) can modify the collection at the same time, given, each thread works on different bucket. So unlike hashtable, we perform any sort of operation ( update, delete, read, create) without locking on entire map in ConcurrentHashMap.
 
 ```java
 ConcurrentMap<String, Integer> concurrentHashMap = new ConcurrentHashMap<>();
