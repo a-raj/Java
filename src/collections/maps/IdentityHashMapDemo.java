@@ -1,17 +1,16 @@
 package collections.maps;
 
 import java.util.HashMap;
-import java.util.IdentityHashMap;
 
-public class IndentityHashMap {
+public class IdentityHashMapDemo {
 
 	public static void main(String[] args) {
 		/*
-		 * IentityHashMap as name suggests uses the equality operator(==) for comparing
+		 * IdentityHashMap as name suggests uses the equality operator(==) for comparing
 		 * the keys. So when you put any Key Value pair in it the Key Object is compared
 		 * using == operator.
 		 */
-		IdentityHashMap<String, Integer> identityHashMap = new IdentityHashMap<>();
+		java.util.IdentityHashMap<String, Integer> identityHashMap = new java.util.IdentityHashMap<>();
 		String s1 = "Key";
 		String s2 = new String("Key");
 		if (s1 != s2) {

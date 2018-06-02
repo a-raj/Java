@@ -15,13 +15,13 @@ public class TreeMapDemo {
 		 
 		//Use natural order sorting or the comparator we provide
 		//Insert, Delete and find in O(log(n))
-		TreeMap<String, Integer> treemap = new TreeMap<>(comparator);
+		TreeMap<String, Integer> treeMap = new TreeMap<>(comparator);
 		
-		treemap.put("Short", 123);
-		treemap.put("very long", 147);
-		treemap.put("medium", 159);
+		treeMap.put("Short", 123);
+		treeMap.put("very long", 147);
+		treeMap.put("medium", 159);
 		
-		Set<Map.Entry<String, Integer>> set = treemap.entrySet();
+		Set<Map.Entry<String, Integer>> set = treeMap.entrySet();
 		
 		set.forEach(System.out::println);
 		 

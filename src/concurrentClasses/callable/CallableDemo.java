@@ -1,9 +1,6 @@
 package concurrentClasses.callable;
 
-import java.util.concurrent.ExecutionException;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
-import java.util.concurrent.Future;
+import java.util.concurrent.*;
 
 public class CallableDemo {
 	
@@ -25,4 +22,39 @@ public class CallableDemo {
 		System.out.println("Done");
 	}
 
+
+	static class Factorial implements Callable<Integer> {
+
+		private int n;
+		Factorial(int n){
+			this.n = n;
+		}
+
+		@Override
+		public Integer call() throws Exception {
+			int fact = 1;
+			for(int i = 2; i <=n; i++ ) {
+				fact *= i;
+			}
+			return fact;
+		}
+	}
+
+
+	static class Sum implements Callable<Integer> {
+
+		private int n;
+
+		Sum(int n){
+			this.n = n;
+		}
+		@Override
+		public Integer call() throws Exception {
+			int sum = 0;
+			for(int i = 0; i < n; i++) {
+				sum+=i;
+			}
+			return sum;
+		}
+	}
 }
