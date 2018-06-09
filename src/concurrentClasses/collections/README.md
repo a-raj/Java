@@ -1,4 +1,4 @@
-# Concurrrent Collections
+# Concurrent Collections
 
 * _[BlockingQueue](#blockingqueue)_
   * [ArrayBlockingQueue](#arrayblockingqueue)
