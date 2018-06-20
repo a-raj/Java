@@ -130,7 +130,7 @@ bounded.put("Value");
 String value = bounded.take();
 ```
 
-## PriorityBLockingQueue
+## PriorityBlockingQueue
 
 **Implements** BlockingQueue  
 **Extends** AbstractQueue  
