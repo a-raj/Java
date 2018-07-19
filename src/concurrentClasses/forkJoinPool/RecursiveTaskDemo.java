@@ -18,7 +18,7 @@ public class RecursiveTaskDemo {
         System.out.println("Sum is: " + summation);
 
 
-        //To see ForkJoinPool in working condition use below code and comment out above 2 lines
+        //To see ForkJoinPool in working condition use below code and comment out the lines
         /*forkJoinPool.execute(task);
         while (!task.isDone()) {
             System.out.println(forkJoinPool);

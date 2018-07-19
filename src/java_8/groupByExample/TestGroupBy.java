@@ -14,6 +14,9 @@ public class TestGroupBy {
 		persons.add(new Person("Priya", Gender.FEMALE, 26));
 		persons.add(new Person("Manya", Gender.FEMALE, 25));
 		persons.add(new Person("Tari", Gender.MALE, 30));
+		persons.add(new Person("Tari", Gender.MALE, 35));
+		persons.add(new Person("Kiran", Gender.FEMALE, 25));
+		persons.add(new Person("Kiran", Gender.MALE, 30));
 		
 		
 		//given a list of people, create a map where

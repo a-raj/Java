@@ -11,7 +11,7 @@ public class LambdasAndStreams {
 	public static void main(String[] args) {
 	
 		List<Integer> numbers = Arrays.asList(1, 2, 3, 4, 5, 6);
-		
+
 		for(int i = 0; i < numbers.size(); i++)
 			System.out.print(numbers.get(i) + " ");
 		System.out.println();
@@ -122,7 +122,7 @@ public class LambdasAndStreams {
 		}
 		
 		
-		//DECLARITIVE STYLE CODING OR FUNCTIONAL
+		//DECLARATIVE STYLE CODING OR FUNCTIONAL
 		
 		/*
 		 * Think about stream as a fancy iterator
@@ -131,7 +131,7 @@ public class LambdasAndStreams {
 		 * 
 		 * What filter tool says here 
 		 * It says given an element, element modulo 2 equals to zero 
-		 * It says only give me number equls to zero and block everything else.
+		 * It says only give me number equals to zero and block everything else.
 		 *  
 		 * */
 		System.out.println(
@@ -154,7 +154,7 @@ public class LambdasAndStreams {
 		 *  ParallelStream says I don't mind using a lot of thread and a lot of resources so I can get the answer faster.
 		 * 
 		 *  Use ParallelStream when it make sense to use it 
-		 *  1. When the problem in hand is  actually parallelisable
+		 *  1. When the problem in hand is  actually parallelizable
 		 *  2. When you are willing to spend a lot of Resources to get the result faster
 		 *  3. When the data size is big enough you get the benefit in performance
 		 *  4. When the task computation is big enough you get the benefit in performance

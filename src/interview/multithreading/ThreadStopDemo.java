@@ -1,4 +1,4 @@
-package interview.problem1;
+package interview.multithreading;
 
 import java.util.concurrent.TimeUnit;
 
