@@ -4,7 +4,7 @@
   * [ArrayBlockingQueue](#arrayblockingqueue)
   * [DelayQueue](#delayqueue)
   * [LinkedBlockingQueue](#linkedblockingqueue)
-  * [PriorityBLockingQueue](#priorityblockingqueue)
+  * [PriorityBlockingQueue](#priorityblockingqueue)
   * [SynchronousQueue](#synchronousqueue)
   * _[BlockingDeque](#blocingdeque)_
     * [LinkedBlockingDeque](#linkedblockingdeque)
@@ -130,7 +130,7 @@ bounded.put("Value");
 String value = bounded.take();
 ```
 
-## PriorityBLockingQueue
+## PriorityBlockingQueue
 
 **Implements** BlockingQueue  
 **Extends** AbstractQueue  
