@@ -27,6 +27,12 @@ public class StrategyPattern {
         messages = filter(messages, new FilterByKeyword("Wrong"));
         messages = filter(messages, new FilterBySize(200));
 
+        /*
+        * You can also use lambda expressions to implement Strategy pattern in Java,
+        * as you can use lambdas in place of anonymous class in Java.
+        * This will make your code even more readable and concise.
+        * */
+
     }
 
     /*
