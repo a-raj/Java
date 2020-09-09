@@ -15,17 +15,17 @@ class MyThread  implements Runnable{
 
 	@Override
 	public void run() {
-		System.out.println("Thread " + this.name + " Begginning Phase One");
+		System.out.println("Thread " + this.name + " Beginning Phase One");
 		phaser.arriveAndAwaitAdvance();
 
 		sleep2Sec();
 		
-		System.out.println("Thread " + this.name + " Begginning Phase Two");
+		System.out.println("Thread " + this.name + " Beginning Phase Two");
 		phaser.arriveAndAwaitAdvance();
 
 		sleep2Sec();
 
-		System.out.println("Thread " + this.name + " Begginning Phase Three");
+		System.out.println("Thread " + this.name + " Beginning Phase Three");
 		phaser.arriveAndAwaitAdvance();
 
 	}

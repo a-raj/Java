@@ -75,7 +75,7 @@ public class BlockingQueueDemo {
 		System.out.println(blockingDeque.takeLast());
 		
 		/*
-		 * TrasferQueue and LinkedTrasferQueue
+		 * TrasferQueue and LinkedTransferQueue
 		 * */
 		String s1 = "Transfer 1";
 		TransferQueue<String> transferQueue = new LinkedTransferQueue<>();

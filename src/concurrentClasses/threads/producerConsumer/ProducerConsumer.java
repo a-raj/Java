@@ -9,7 +9,7 @@ import java.util.LinkedList;
 public class ProducerConsumer {
 
 	LinkedList<Integer> list = new LinkedList<Integer>();
-	int capacaty = 5;
+	int capacity = 5;
 	//Function called by producer thread
 	public void produce() throws InterruptedException {
 		int value = 0;
@@ -17,7 +17,7 @@ public class ProducerConsumer {
 		while(true){
 			//Synchronized block so that only a producer or a consumer thread runs at a time.
 			synchronized (this) {
-				while(list.size() == capacaty)
+				while(list.size() == capacity)
 					wait();//producer thread waits while list is full
 				
 				System.out.println("Producer produce-" + value);

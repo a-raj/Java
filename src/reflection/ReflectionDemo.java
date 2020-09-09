@@ -10,7 +10,6 @@ import java.util.List;
 public class ReflectionDemo {
     public static void main(String[] args) {
 
-
         Class classDemoClass = ClassDemo.class;
 
         printGetterAndSetter(classDemoClass);
